@@ -5,10 +5,9 @@ var path   = require('path');
 var fs     = require('fs');
 var jscpd  = require('../');
 var gutil  = require('gulp-util');
+var File   = require('vinyl');
 var chai   = require('chai');
 var expect = chai.expect;
-
-gutil.log = function() {};
 
 describe('gulp-jscpd', function() {
   it('exists', function() {
@@ -26,7 +25,7 @@ describe('gulp-jscpd', function() {
 
     stream.on('end', done);
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_1.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_1.js'))
@@ -43,13 +42,13 @@ describe('gulp-jscpd', function() {
       done();
     });
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_1.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_1.js'))
     }));
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_2.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_2.js'))
@@ -71,13 +70,13 @@ describe('gulp-jscpd', function() {
 
     stream.on('end', done);
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_1.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_1.js'))
     }));
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_2.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_2.js'))
@@ -98,13 +97,13 @@ describe('gulp-jscpd', function() {
       done();
     });
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_1.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_1.js'))
     }));
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       base    : __dirname,
       path    : path.join(__dirname, '/fixtures/fixture_2.js'),
       contents: fs.readFileSync(path.join(__dirname, '/fixtures/fixture_2.js'))
@@ -124,7 +123,7 @@ describe('gulp-jscpd', function() {
 
     stream.on('end', done);
 
-    stream.write(new gutil.File());
+    stream.write(new File());
 
     stream.end();
   });
@@ -139,7 +138,7 @@ describe('gulp-jscpd', function() {
       done();
     });
 
-    stream.write(new gutil.File({
+    stream.write(new File({
       contents: process.stdin
     }));
 
